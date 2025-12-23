@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 void DisplayStudentInfo(string name, string id, double score, char grade)
 {
 	cout << "Student Name: " << name << "\n";
 	cout << "Student ID: " << id << "\n";
-	cout << "Score: " << score << "\n";
+	cout << "Score: " << fixed << setprecision(2) << score << "\n";
 	cout << "Grade: " << grade << "\n";
 }
 
