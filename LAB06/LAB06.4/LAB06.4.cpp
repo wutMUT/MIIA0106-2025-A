@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void DisplayStudentInfo(string name, string id, double score, char grade)
+{
+	cout << "Student Name: " << name << "\n";
+	cout << "Student ID: " << id << "\n";
+	cout << "Score: " << score << "\n";
+	cout << "Grade: " << grade << "\n";
+}
+
+void calculateGrade(double score, char& grade)
+{
+	if (score >= 90)
+		grade = 'A';
+	else if (score >= 80)
+		grade = 'B';
+	else if (score >= 70)
+		grade = 'C';
+	else if (score >= 60)
+		grade = 'D';
+	else
+		grade = 'F';
+}
+
+int main()
+{
+	int size;
+	cout << "Enter number of students: ";
+	cin >> size;
+	cin.ignore();
+
+	string* name = new string[size];
+	string* id = new string[size];
+	double* score = new double[size];
+	char* grade = new char[size];
+
+	for (int i = 0; i < size; i++) {
+		cout << "Enter Student " << (i + 1) << " Name: ";
+		getline(cin, name[i]);
+		cout << "Enter Student " << (i + 1) << " ID: ";
+		getline(cin, id[i]);
+		cout << "Enter Student " << (i + 1) << " Score: ";
+		cin >> score[i];
+		cin.ignore();
+	}
+
+	for (int i = 0; i < size; i++) {
+		calculateGrade(score[i], grade[i]);
+		cout << "\nStudent " << (i + 1) << " Information:\n";
+		DisplayStudentInfo(name[i], id[i], score[i], grade[i]);
+	}
+	delete[] name;
+	delete[] id;
+	delete[] score;
+	delete[] grade;
+
+	return 0;
+}
